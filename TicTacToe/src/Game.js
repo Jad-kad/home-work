@@ -52,31 +52,61 @@ function TicTacToe() {
 
 
     this.winner = function(board) {
+        // correct
       if (this.board[2] == this.board[4] && this.board[2] == this.board[6]) {
           return this.winner = this.board[2];
       }
+        // correct
         if (this.board[0] == this.board[1] && this.board[0] == this.board[2]) {
             return this.winner = this.board[0];
         }
-
+        /*
+        [ 0 , 1 , 2 ,
+          3 , 4 , 5 ,
+          6 , 7 , 8 ]
+          
+        now the below conditional matches (Z, Y in set {X,O})
+         [ Y , _ , _ ,
+           Z , Z , Y ,
+           _ , _ , _ ]
+          
+        */
+        // wrong
         if (this.board[3] == this.board[4] && this.board[0] == this.board[5]) {
             return this.winner = this.board[3];
         }
+        // correct
         if (this.board[6] == this.board[7] && this.board[6] == this.board[8]) {
             return this.winner = this.board[6];
         }
+        /*
+        [ 0 , 1 , 2 ,
+          3 , 4 , 5 ,
+          6 , 7 , 8 ]
+          
+        now the below conditional matches (Z, Y in set {X,O})
+         [ Y , _ , _ ,
+           Y , _ , _ ,
+           Z , Z , _ ]
+          
+        */
+        // wrong
         if (this.board[0] == this.board[3] && this.board[6] == this.board[7]) {
             return this.winner = this.board[0];
         }
+        // correct
         if (this.board[1] == this.board[4] && this.board[1] == this.board[7]) {
             return this.winner = this.board[1];
         }
+        // correct
         if (this.board[2] == this.board[5] && this.board[2] == this.board[8]) {
             return this.winner = this.board[2];
         }
+        // correct
         if (this.board[0] == this.board[4] && this.board[0] == this.board[8]) {
             return this.winner = this.board[0];
         }
+        // You had the correct number of cases, but just got two of them wrong. Pretty good!
          else {
             return this.winner = false;
         }
