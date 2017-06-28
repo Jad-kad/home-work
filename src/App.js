@@ -1,6 +1,6 @@
 import React from 'react';
-import {AddNewTask} from './addTask'
-import {ToDoAppList} from './todoList.js'
+import {AddNewTask} from './components/AddNewTask'
+import {ToDoAppList} from './components/ToDoAppList.js'
 import './App.css'
 
 
@@ -11,17 +11,22 @@ export class App extends React.Component {
    this.updateList = this.updateList.bind(this)
     this.removeTask = this.removeTask.bind(this)    
   }
-
-updateList(text){
+  
+updateList(input){
 	let updatedTasks = this.state.tasks;
 //console.log(`updated tasks is ${updatedTasks}`)
-	updatedTasks.push({description: text,done:false})
-	this.setState({tasks: updatedTasks})
+    if (input !="" || input !== null) {
+      alert("please enter a valid task")
+    }
+    else{
+	    updatedTasks.push({description: input,done:false})
+	    this.setState({tasks: updatedTasks})
+    }
 } 
 
-removeTask(text){
+removeTask(input){
 	let updatedTasks = this.state.tasks;
-	updatedTasks.splice(updatedTasks.indexOf(text), 1)
+	updatedTasks.splice(updatedTasks.indexOf(input), 1)
 	this.setState({tasks: updatedTasks})
 } 
 
